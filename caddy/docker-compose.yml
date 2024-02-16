@@ -1,0 +1,24 @@
+version: "3.6"
+services:
+ caddy:
+    image: wbms/caddy-cloudflare
+    container_name: caddy
+    restart: unless-stopped
+    environment:
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+    ports:
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_config:/config
+      - caddy_data:/data
+    networks:
+      - proxy
+
+volumes:
+  caddy_config:
+  caddy_data:
+
+networks:
+  proxy:
+    external: true

@@ -1,2 +1,3 @@
 .git
 docker_volume
+.env
