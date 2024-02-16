@@ -28,6 +28,6 @@
 }
 
 test.lauva.dev {
-	reverse_proxy http://lauva:3000
+	reverse_proxy http://lauva_website:3000
 	import default-config
 }
