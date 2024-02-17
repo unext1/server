@@ -1,6 +1,6 @@
 {
 	admin off
-	email info@lauva.dev
+	email {env.CADDY_ADMIN_EMAIL}
 }
 
 (default-config) {
@@ -27,7 +27,7 @@
 	encode zstd gzip
 }
 
-test.lauva.dev {
-	reverse_proxy http://lauva_website:3000
+{env.SITE_ADDRESS} {
+	reverse_proxy http://${env.CONTAINER_NAME_AND_PORT}
 	import default-config
 }
